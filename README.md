@@ -4,8 +4,8 @@
 
 (Interface between Computer and STM32)
 
-This program uses Python with tkinter for a basic gui.
-This program has two main uses:
+This program uses Python with tkinter for a basic gui.\n
+This program has two main uses:\n
   1. Ability to send commands to the STM32 through USART protocol.
   2. Ability to receive messages, commands from the STM32 to the Computer through USART protocol.
 

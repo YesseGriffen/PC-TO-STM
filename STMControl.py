@@ -13,8 +13,8 @@ class LogicFunctions:
         self.starting_com_port = "COM6"
         self.starting_baud_rate = "115200"
         self.starting_page_size = "256"
-        self.starting_input_path = r"C:\Users\jdwoo\Desktop\PROGRAMS\Visicom5000\Python\Sounds\wav"
-        self.starting_output_path = r"C:\Users\jdwoo\Desktop\PROGRAMS\Visicom5000\Python\Sounds\raw"
+        self.starting_input_path = r"path to .wav audio file"
+        self.starting_output_path = r"path to .raw converted audio file"
         self.connected = False
         self.python_transferring = False
         self.serial_connection = None

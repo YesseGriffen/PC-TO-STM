@@ -22,9 +22,9 @@ The structure of the code:
     Defining the widget is all you need to do. I am experimeting with an auto-grider that is basic and does have some flaws as of now. So once you define a widget, that is all you need to do.  
   2. To add actions, you would need to first create the necessary function in "LogicFunctions", then in "fit_logic" under WorkSpace, we redefine it in fit_logic to add threading and post-function logic.
      In my example I have a panel called "TestAction" that just has buttons on it for me to press and send commands.  
-     A simple example of a function is:  
+     A simple example of a function is:```
      def stm_flash_jedecid(self):  
-        ```self.py_print(f"Action: Sending 'J'(0x4A) for JedecID")  
+        self.py_print(f"Action: Sending 'J'(0x4A) for JedecID")  
         try:  
             with self.serial_lock:  
                 self.serial_connection.write(b'J')  
@@ -32,13 +32,13 @@ The structure of the code:
         except Exception as e:  
             self.py_print(f"!*ERR:{e}")```Python
   
-     Then in fit_logic:  
-       ```case "JedecID":  
+     Then in fit_logic:```  
+       case "JedecID":  
               def run():  
                   self.logic.stm_flash_jedecid()  
               threading.Thread(target=run, daemon=True).start()```Python
   
-     Then in a panel/frame:  
-      ```tk.Button(master=root, text="Recall JedecID", width=15, command=lambda: self.fit_logic(action="JedecID"))```Python
+     Then in a panel/frame:```  
+      tk.Button(master=root, text="Recall JedecID", width=15, command=lambda: self.fit_logic(action="JedecID"))```Python
        
      When I press this button, I am sending the letter 'J' or (0x4A) to the STM32, in my STM32 I have a switch statement that looks for incoming bytes through USART, and once it picks up 'J' it will go through a function to retrieve the JEDECID from my flash chip and        print it back to my computer through the tkinter GUI.  

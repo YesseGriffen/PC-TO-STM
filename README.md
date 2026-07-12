@@ -34,14 +34,14 @@ The structure of the code:
             self.py_print(f"!*ERR:{e}")
     ````
      Then in fit_logic:
-     ````python
+    ````python
        case "JedecID":  
               def run():  
                   self.logic.stm_flash_jedecid()  
               threading.Thread(target=run, daemon=True).start()
-     ````
+    ````
      Then in a panel/frame:
-     ````python
+    ````python
       tk.Button(master=root, text="Recall JedecID", width=15, command=lambda: self.fit_logic(action="JedecID"))
-     ````
+    ````
      When I press this button, I am sending the letter 'J' or (0x4A) to the STM32, in my STM32 I have a switch statement that looks for incoming bytes through USART, and once it picks up 'J' it will go through a function to retrieve the JEDECID from my flash chip and        print it back to my computer through the tkinter GUI.  

@@ -9,10 +9,10 @@ This program has two main uses:
   1. Ability to send commands to the STM32 through USART protocol.
   2. Ability to receive messages, commands from the STM32 to the Computer through USART protocol.
 
-Notes about my setup in particular:
+Notes about my setup in particular:  
   -My use case is using a NUCLEO-STM32H7A3ZIQ. With other boards like a W25Q128 flash chip, MAX98357A Amp.  
   -For transmitting and receiving between my Computer and the STM32, I use the ST-LINK which is CN1 on this NUCLEO.  
-  -Through CubeMX, tt may be needed to turn off VCOM and manually turn on USART3, VCOM may slow down transfers and can mess with timing overall.  
+  -Through CubeMX, it may be needed to turn off VCOM and manually turn on USART3, VCOM may slow down transfers and can mess with timing overall.  
   
   
 

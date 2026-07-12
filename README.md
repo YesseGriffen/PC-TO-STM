@@ -14,8 +14,6 @@ Notes about my setup in particular:
   -For transmitting and receiving between my Computer and the STM32, I use the ST-LINK which is CN1 on this NUCLEO.  
   -Through CubeMX, it may be needed to turn off VCOM and manually turn on USART3, VCOM may slow down transfers and can mess with timing overall.  
   
-  
-
 Some of the code is designed for my use case, most of the functions in "LogicFunctions" for example, and what buttons/entries I use.  
 The structure of the code:  
   1. WorkSpace Class is where all tkinter widgets get placed, to add widgets, you need to specify the frame or panel then it is recommended to place entries in the entries array and etc.  
@@ -23,8 +21,6 @@ The structure of the code:
   2. To add actions, you would need to first create the necessary function in "LogicFunctions", then in "fit_logic" under WorkSpace, we redefine it in fit_logic to add threading and post-function logic.
      In my example I have a panel called "TestAction" that just has buttons on it for me to press and send commands.  
      A simple example of a function is:
-
-
        ```python
        def stm_flash_jedecid(self):    
           self.py_print(f"Action: Sending 'J'(0x4A) for JedecID")  
@@ -35,24 +31,16 @@ The structure of the code:
           except Exception as e:  
               self.py_print(f"!*ERR:{e}")
         ```
-    
      Then in fit_logic:  
-
       ```python
-
        case "JedecID":  
               def run():  
                   self.logic.stm_flash_jedecid()  
               threading.Thread(target=run, daemon=True).start()
-              
       ```
-    
      Then in a panel/frame:  
-     
         ```python
-      
         tk.Button(master=root, text="Recall JedecID", width=15, command=lambda: self.fit_logic(action="JedecID"))
-      
         ```
     
      When I press this button, I am sending the letter 'J' or (0x4A) to the STM32, in my STM32 I have a switch statement that looks for incoming bytes through USART, and once it picks up 'J' it will go through a function to retrieve the JEDECID from my flash chip and        print it back to my computer through the tkinter GUI.  
